@@ -5,19 +5,19 @@ import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { domain } from "../domain";
 
-// export async function getServerSideProps(context: any) {
-//   const data = await fetchMeta(domain + "/" + context.params.slug);
-//   // console.log('xxxxxxx');
-//   return {
-//     props: data,
-//   };
-// }
+export async function getServerSideProps(context: any) {
+  const data = await fetchMeta(domain + "/" + context.params.slug);
+  return {
+    props: data,
+  };
+}
 
 export default function App({ url, title, description, icon, image }: any) {
   const router = useRouter();
 
   useEffect(() => {
-    console.log("useEffect", url);
+    console.log("useEffect");
+    router.replace(url);
   }, []);
 
   return (
